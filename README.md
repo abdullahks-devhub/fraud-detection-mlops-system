@@ -14,7 +14,9 @@
 * Performed stratified train-test split
 * Saved train and test datasets as artifacts
 * Created training pipeline entry point
+
 **⚙️ Key Design Decisions**
+
 * Used stratified sampling to preserve fraud ratio
 * Saved datasets for reproducibility
 * Modularized ingestion logic into reusable component
