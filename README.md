@@ -32,3 +32,21 @@
 
 * Only scaled Amount (other features already normalized via PCA)
 * Saved preprocessing pipeline to ensure consistency across training and inference
+
+**Day 4 — Model Training & Evaluation**
+
+* Implemented model training pipeline
+* Trained Logistic Regression and Random Forest models
+* Used class balancing to handle imbalanced dataset
+* Evaluated models using ROC-AUC metric
+* Logged experiments using MLflow
+* Selected best-performing model
+
+**📊 Metrics Used**
+
+* ROC-AUC (primary metric for imbalanced classification)
+
+**⚙️ Performance Optimization**
+
+* Enabled parallel processing using n_jobs=-1 in Random Forest
+* Reduced training time significantly
