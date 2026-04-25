@@ -20,3 +20,15 @@
 * Used stratified sampling to preserve fraud ratio
 * Saved datasets for reproducibility
 * Modularized ingestion logic into reusable component
+
+**Day 3 — Data Transformation Pipeline**
+* Implemented data transformation component
+* Applied scaling to transaction amount feature
+* Built reusable preprocessing pipeline
+* Saved preprocessor object for inference consistency
+* Integrated transformation into training pipeline
+
+**⚙️ Key Decisions**
+
+* Only scaled Amount (other features already normalized via PCA)
+* Saved preprocessing pipeline to ensure consistency across training and inference
