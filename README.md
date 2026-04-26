@@ -50,3 +50,18 @@
 
 * Enabled parallel processing using n_jobs=-1 in Random Forest
 * Reduced training time significantly
+
+**Day 5 — Prediction Pipeline & Risk Scoring**
+
+* Built prediction pipeline for inference
+* Loaded trained model and preprocessor
+* Implemented probability-based predictions
+* Added fraud risk classification (LOW / MEDIUM / HIGH)
+* Performed threshold tuning using F1-score
+* Converted model output into actionable decision system
+
+**🔥 Key Features**
+
+* Probability-based fraud detection
+* Custom decision threshold
+* Risk scoring system for interpretability

@@ -9,6 +9,7 @@ import mlflow
 import mlflow.sklearn
 
 
+
 class ModelTrainer:
     def __init__(self):
         self.model_path = "artifacts/model.pkl"
