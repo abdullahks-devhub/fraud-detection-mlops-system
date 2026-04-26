@@ -36,15 +36,25 @@ class PredictionPipeline:
         else:
             return "HIGH 🔴"
 
+    def get_confidence(self, prob):
+        if prob < 0.1 or prob > 0.9:
+            return "HIGH CONFIDENCE"
+        elif prob < 0.3 or prob > 0.7:
+            return "MEDIUM CONFIDENCE"
+        else:
+            return "LOW CONFIDENCE"
+
     def predict_with_risk(self, data: dict):
         prob = self.predict(data)
         risk = self.get_risk(prob)
 
         threshold = 0.265306
         prediction = 1 if prob > threshold else 0
+        confidence = self.get_confidence(prob)
 
         return{
             "fraud_probability": float(prob),
             "prediction": int(prediction),
-            "risk_level": risk
+            "risk_level": risk,
+            "confidence": confidence
         }
