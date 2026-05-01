@@ -65,3 +65,18 @@
 * Probability-based fraud detection
 * Custom decision threshold
 * Risk scoring system for interpretability
+
+**Day 6 — FastAPI Deployment**
+
+* Built REST API using FastAPI
+* Created /predict endpoint for fraud detection
+* Implemented request validation using Pydantic
+* Integrated prediction pipeline into API
+* Enabled interactive API testing using Swagger UI
+
+**🚀 Features**
+
+* Real-time fraud prediction
+* Structured input validation
+* Risk-based decision output
+* Interactive API documentation
