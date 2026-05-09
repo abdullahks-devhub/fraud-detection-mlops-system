@@ -1,4 +1,5 @@
 services:
+
   zookeeper:
     image: confluentinc/cp-zookeeper:7.3.0
     container_name: zookeeper
@@ -21,11 +22,26 @@ services:
 
     environment:
       KAFKA_BROKER_ID: 1
-
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
-
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
-
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  fraud-api:
+    build: .
+    container_name: fraud-api
+
+    ports:
+      - "8000:8000"
+
+    depends_on:
+      - kafka
+
+  fraud-consumer:
+    build: .
+    container_name: fraud-consumer
+
+    command: python -m src.kafka.consumer
+
+    depends_on:
+      - kafka
