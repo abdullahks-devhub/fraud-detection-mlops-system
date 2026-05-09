@@ -1,93 +1,178 @@
-# 🛡️ Real-Time Fraud Detection MLOps System
-
+---
+title: Fraud Detection System
+emoji: 🛡️
+colorFrom: blue
+colorTo: purple
+sdk: gradio
+sdk_version: "5.15.0"
+python_version: "3.10.13"
+app_file: app.py
+pinned: false
+---
 <div align="center">
-  <img src="https://img.shields.io/badge/Python-3.10-blue.svg" alt="Python Version">
-  <img src="https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi" alt="FastAPI">
-  <img src="https://img.shields.io/badge/Kafka-231F20?style=flat&logo=apachekafka" alt="Kafka">
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker" alt="Docker">
-  <img src="https://img.shields.io/badge/Gradio-FF7C00?style=flat&logo=gradio" alt="Gradio">
-  <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikit-learn" alt="Scikit-Learn">
+
+# 🛡️ Fraud Detection MLOps System
+### *Real-Time Security. Event-Driven Insights. Fraud Prevention.*
+
+[![Gradio](https://img.shields.io/badge/Gradio-FF4B4B?style=for-the-badge&logo=gradio&logoColor=white)](https://gradio.app/)
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![HuggingFace](https://img.shields.io/badge/Hugging%20Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)](https://huggingface.co/spaces/AbdullahKS-Devhub/fraud-detection-system)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Kafka](https://img.shields.io/badge/Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white)](https://kafka.apache.org/)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com/)
+
+<br/>
+
+> **Stream real-time transactions. Let AI assess the risk. Prevent fraud instantly.**
+
+<br/>
+
+🚀 **[Try the Live Demo →](https://huggingface.co/spaces/AbdullahKS-Devhub/fraud-detection-system)**
+
 </div>
-
-<br>
-
-A production-ready, end-to-end Machine Learning pipeline for real-time credit card fraud detection. Built with an event-driven microservices architecture using Apache Kafka, FastAPI, and Docker, this system efficiently processes high-velocity transaction streams and serves predictions via a beautiful Gradio dashboard.
-
-[**Launch Live Dashboard on Hugging Face Spaces 🚀**](https://huggingface.co/spaces/AbdullahKS-Devhub/fraud-detection-system)
 
 ---
 
-## 🌟 Key Features
+## ✨ Features
 
-*   **Real-Time Streaming Inference:** Leverages Apache Kafka to ingest, process, and evaluate live financial transaction streams instantly.
-*   **Highly Optimized Pipeline:** The machine learning components (`model` and `preprocessor`) are loaded into memory globally upon initialization, ensuring lightning-fast microsecond inference latency.
-*   **RESTful API Integration:** Exposes a robust FastAPI endpoint (`/predict`) validated heavily by Pydantic schemas.
-*   **Premium Interactive Dashboard:** Includes a sleek, dark-mode Gradio user interface for manual transaction analysis and probabilistic confidence reporting.
-*   **Containerized Architecture:** Fully orchestrated using Docker and `docker-compose`, spinning up Zookeeper, Kafka brokers, consumer nodes, and the API seamlessly.
-*   **MLflow Experiment Tracking:** Standardized tracking of hyperparameter tuning, metrics (ROC-AUC), and model artifacts to ensure reproducibility.
+- 🛡️ **Instant Valuations** — Highly accurate fraud predictions based on streaming data
+- 🧠 **Automated ML Pipeline** — End-to-end MLOps from data ingestion to model training
+- ⚡ **Event-Driven Streaming** — Processes real-time transactions seamlessly using Apache Kafka
+- 🎛️ **Dual Interfaces** — Beautiful dark-mode Gradio UI for manual checks, REST FastAPI for developers
+- 📈 **Experiment Tracking** — Integrated with MLflow to continuously track model metrics (ROC-AUC) 
+- 🌐 **Zero Setup for Users** — Fully deployed on Hugging Face Spaces
 
-## 🏗️ Architecture
+---
 
-```mermaid
-graph LR
-    A[Kafka Producer] -->|Transaction Stream| B((Kafka Broker))
-    B -->|Subscribe| C[Kafka Consumer]
-    C --> D{Prediction Pipeline}
-    E[FastAPI Endpoint] --> D
-    F[Gradio Dashboard] --> D
-    D --> G[Scikit-Learn Model]
-    G --> H((Risk Output))
-```
+## 🛠️ Tech Stack
 
-## 🛠️ Technology Stack
+| Layer | Technology |
+|---|---|
+| **Frontend** | Gradio + Custom CSS (Premium Dark Theme) |
+| **API Backend** | FastAPI + Uvicorn |
+| **Event Streaming** | Apache Kafka + Zookeeper |
+| **ML Models** | Scikit-learn (Random Forest, Logistic Regression) |
+| **Experiment Tracking**| MLflow |
+| **Data Processing** | Pandas, NumPy |
+| **Deployment** | Docker, Docker Compose, Hugging Face Spaces |
+| **Version Control** | Git |
 
-*   **Core:** Python 3.10, Pandas, NumPy
-*   **Machine Learning:** Scikit-Learn, MLflow
-*   **Streaming Engine:** Apache Kafka, Zookeeper
-*   **Web Frameworks:** FastAPI, Uvicorn, Gradio
-*   **Deployment:** Docker, Docker Compose, Hugging Face Spaces
+---
 
-## 📂 Project Structure
+## 🧠 How It Works
 
 ```text
-├── src/
-│   ├── api/                 # FastAPI REST application
-│   ├── components/          # Data Ingestion, Transformation, & Training modules
-│   ├── kafka/               # Kafka Producers and Consumers for streaming
-│   └── pipeline/            # Optimized Inference & Training Pipelines
-├── artifacts/               # Pickled Models and Preprocessors
-├── notebooks/               # Exploratory Data Analysis (EDA)
-├── docker-compose.yml       # Multi-container orchestration
-├── Dockerfile               # Production container definition
-├── app.py                   # Gradio Dashboard UI
-└── ROADMAP.md               # Historical project logs
+Producer streams transaction data via Kafka / User enters via UI
+              ↓
+Inputs validated via Pandas & Pydantic
+              ↓
+Preprocessor.pkl applies required scaling 
+              ↓
+Best performing ML Model predicts fraud probability
+              ↓
+Result evaluated against optimal threshold & rendered as Risk Tier (e.g. HIGH 🔴)
 ```
 
-## 🚀 Getting Started
+---
 
-### Prerequisites
-*   Docker & Docker Compose
-*   Python 3.10+
+## 📥 Input Parameters
 
-### Local Execution (Docker Orchestration)
-To spin up the entire event-driven architecture (Kafka, Zookeeper, API, and Consumer):
+<details>
+<summary>⚖️ <strong>Transaction Properties</strong></summary>
+<br/>
+
+| Parameter | Type | Description |
+|---|---|---|
+| **Time** | Numeric | Seconds elapsed between this transaction and the first transaction |
+| **Amount** | Numeric | Transaction amount ($) |
+
+</details>
+
+<details>
+<summary>📐 <strong>PCA Features</strong></summary>
+<br/>
+
+| Parameter | Type | Description |
+|---|---|---|
+| **V1 - V28** | Numeric | Principal components obtained via PCA to protect user confidentiality |
+
+</details>
+
+---
+
+## 🚀 Run Locally
+
+**1. Clone the repo**
+```bash
+git clone https://github.com/abdullahks-devhub/fraud-detection-mlops-system.git
+cd fraud-detection-mlops-system
+```
+
+**2. Run with Docker Compose (Full Streaming Pipeline)**
 ```bash
 docker-compose up --build
 ```
-*The FastAPI docs will be available at `http://localhost:8000/docs`.*
+*Access the API at `http://localhost:8000/docs`*
 
-### Local Execution (Gradio Dashboard)
-To run the standalone interactive UI:
+**3. Or Run the Gradio App Independently**
 ```bash
 pip install -r requirements.txt
 python app.py
 ```
 *The UI will launch on `http://127.0.0.1:7860`.*
 
-## 📊 Model Performance
-Given the extreme class imbalance in credit card fraud (~0.17%), models were evaluated using the **ROC-AUC** metric. 
-- **Algorithms Evaluated:** Logistic Regression, Random Forest (with class weight balancing).
-- **Inference Threshold:** Tuned dynamically to `0.265` using F1-score optimization for maximum recall on fraudulent cases without excessive false positives.
+---
 
-## 📜 Development Roadmap
-To see the chronological progression of this project from Day 1 to Day 9, please refer to the [ROADMAP.md](ROADMAP.md) file.
+## 📁 Project Structure
+
+```text
+.
+├── notebooks/                # Exploratory Data Analysis (EDA)
+│   └── eda.ipynb
+├── src/                      # Source Code
+│   ├── api/                  # FastAPI Application
+│   │   └── app.py
+│   ├── components/           # Core ML Logic
+│   │   ├── data_ingestion.py
+│   │   ├── data_transformation.py
+│   │   └── model_trainer.py
+│   ├── kafka/                # Streaming engine
+│   │   ├── producer.py
+│   │   └── consumer.py
+│   ├── pipeline/             # Inference orchestration
+│   │   └── prediction_pipeline.py
+├── artifacts/                # Pickled Models and Preprocessors
+├── ROADMAP.md                # Historical project logs
+├── docker-compose.yml        # Multi-container setup
+├── Dockerfile                # API Containerization
+├── app.py                    # Gradio Web UI
+└── requirements.txt          # Python dependencies
+```
+
+---
+
+## 📊 Dataset
+
+| Dataset | Source | Records | Features |
+|---|---|---|---|
+| Credit Card Fraud | Kaggle | ~284,807 | 30 predicting features, 1 target |
+
+The dataset features extreme class imbalance (~0.17% fraud cases). Models were evaluated heavily on the **ROC-AUC** metric, and the final decision threshold was mathematically tuned dynamically to `0.265` via F1-score optimization for maximum recall on fraudulent cases without excessive false positives.
+
+---
+
+## ⚠️ Disclaimer
+
+> This application is built **for educational and demonstration purposes only**.
+> It is **not** a substitute for production banking or financial security systems.
+> Always consult a qualified security architect before deploying fraud-detection mechanisms.
+
+---
+
+<div align="center">
+
+Made with ❤️ by **[Abdullah Khan](https://github.com/abdullahks-devhub)**
+
+⭐ Star this repo if you found it useful!
+
+</div>
