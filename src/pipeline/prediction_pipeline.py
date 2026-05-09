@@ -4,28 +4,30 @@ import pandas as pd
 
 class PredictionPipeline:
     def __init__(self):
-        self.model_path = "artifacts/model.pkl"
-        self.preprocessor_path = "artifacts/preprocessor.pkl"
+        # Use absolute path based on the file location to ensure robust execution
+        base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        self.model_path = os.path.join(base_dir, "artifacts", "model.pkl")
+        self.preprocessor_path = os.path.join(base_dir, "artifacts", "preprocessor.pkl")
+        
+        # Load model and preprocessor into memory once during initialization
+        self.model = self._load_model()
+        self.preprocessor = self._load_preprocessor()
 
-    def load_model(self):
+    def _load_model(self):
         with open(self.model_path, "rb") as f:
-            model = pickle.load(f)
-        return model
+            return pickle.load(f)
 
-    def load_preprocessor(self):
+    def _load_preprocessor(self):
         with open(self.preprocessor_path, "rb") as f:
-            preprocessor = pickle.load(f)
-        return preprocessor
+            return pickle.load(f)
 
     def predict(self, data: dict):
-        model = self.load_model()
-        preprocessor = self.load_preprocessor()
-
         df = pd.DataFrame([data])
 
-        df["Amount"] = preprocessor.transform(df[["Amount"]])
-
-        prob = model.predict_proba(df)[:, 1][0]
+        # Use pre-loaded preprocessor and model
+        df["Amount"] = self.preprocessor.transform(df[["Amount"]])
+        prob = self.model.predict_proba(df)[:, 1][0]
+        
         return prob
 
     def get_risk(self, prob):

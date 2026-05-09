@@ -6,3 +6,4 @@ scikit-learn
 mlflow
 pydantic
 kafka-python
+gradio
