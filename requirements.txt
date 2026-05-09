@@ -7,3 +7,4 @@ mlflow
 pydantic
 kafka-python
 gradio
+pyaudioop
