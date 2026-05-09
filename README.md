@@ -61,16 +61,15 @@ pinned: false
 
 ## 🧠 How It Works
 
-```text
-Producer streams transaction data via Kafka / User enters via UI
-              ↓
-Inputs validated via Pandas & Pydantic
-              ↓
-Preprocessor.pkl applies required scaling 
-              ↓
-Best performing ML Model predicts fraud probability
-              ↓
-Result evaluated against optimal threshold & rendered as Risk Tier (e.g. HIGH 🔴)
+```mermaid
+graph LR
+    A[Kafka Producer] -->|Transaction Stream| B((Kafka Broker))
+    B -->|Subscribe| C[Kafka Consumer]
+    C --> D{Prediction Pipeline}
+    E[FastAPI Endpoint] --> D
+    F[Gradio Dashboard] --> D
+    D --> G[Scikit-Learn Model]
+    G --> H((Risk Output))
 ```
 
 ---
