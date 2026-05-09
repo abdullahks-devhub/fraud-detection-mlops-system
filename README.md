@@ -1,4 +1,5 @@
 **Day 1 — Exploratory Data Analysis**
+
 * Performed in-depth EDA on the credit card fraud dataset.
 * Key Observations:
 * Extreme class imbalance (~0.17% fraud cases)
@@ -9,6 +10,7 @@
 * Time feature can simulate real-time streaming
 
 **Day 2 — Data Ingestion Pipeline**
+
 * Implemented data ingestion component
 * Loaded and cleaned dataset (removed corrupted rows)
 * Performed stratified train-test split
@@ -22,6 +24,7 @@
 * Modularized ingestion logic into reusable component
 
 **Day 3 — Data Transformation Pipeline**
+
 * Implemented data transformation component
 * Applied scaling to transaction amount feature
 * Built reusable preprocessing pipeline
