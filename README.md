@@ -80,3 +80,36 @@
 * Structured input validation
 * Risk-based decision output
 * Interactive API documentation
+
+**Day 7 — Dockerization**
+
+* Containerized FastAPI application using Docker
+* Created production-ready Dockerfile
+* Added .dockerignore to optimize image size
+* Enabled container-based deployment
+* Integrated remote model loading (Hugging Face)
+
+**🚀 Features**
+
+* Portable ML API
+* Environment-independent execution
+* Ready for cloud deployment
+
+**📅 Day 8 — Kafka Streaming Integration**
+
+* Integrated Apache Kafka using Docker Compose
+* Built producer-consumer streaming architecture
+* Enabled real-time fraud prediction from transaction streams
+* Implemented event-driven ML inference pipeline
+
+**🚀 Technologies Added**
+
+* Apache Kafka
+* Zookeeper
+* Docker Compose
+
+**⚡ Real-Time Streaming Inference**
+
+* Kafka consumer continuously listens for incoming transactions
+* Producer simulates live transaction stream
+* Fraud predictions generated in real time
